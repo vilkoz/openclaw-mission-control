@@ -740,7 +740,7 @@ function KanbanBoard({
               </div>
 
               {/* Column Body */}
-               <ScrollArea className="flex-1 min-h-0">
+              <ScrollArea className="flex-1 min-h-0">
                 <div
                   className="p-3 flex flex-col gap-3 min-h-[120px] relative z-10"
                   onDragOver={(e) => onDragOver(e, col.id)}
