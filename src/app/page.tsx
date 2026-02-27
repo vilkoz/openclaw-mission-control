@@ -528,8 +528,8 @@ export default function Dashboard() {
           </div>
         </header>
 
-         {/* Content area */}
-         <div className="flex-1 flex min-h-0 overflow-hidden z-10 relative">
+        {/* Content area */}
+        <div className="flex-1 flex min-h-0 overflow-hidden z-10 relative">
           {activeView === "board" && (
             <KanbanBoard
               columns={COLUMNS}
