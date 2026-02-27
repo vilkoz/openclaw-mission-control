@@ -695,7 +695,7 @@ function KanbanBoard({
   return (
     // Allow vertical scrolling when content is tall and stack columns on small screens
     <div className="flex-1 min-h-0 overflow-auto p-4 md:p-6">
-      <div className="flex h-full gap-4 flex-col md:flex-row">
+      <div className="flex gap-4 flex-col md:flex-row md:h-full">
         {columns.map((col) => {
           const colTasks = getColumnTasks(col.id);
           const isActive = col.id === "in_progress";
