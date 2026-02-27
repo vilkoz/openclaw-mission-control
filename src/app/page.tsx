@@ -388,7 +388,7 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen min-h-0">
       {/* ===== Icon Sidebar ===== */}
       <aside className="w-16 flex flex-col items-center py-6 border-r border-border bg-card/50 z-20 shrink-0">
         {/* Logo */}
@@ -528,8 +528,8 @@ export default function Dashboard() {
           </div>
         </header>
 
-        {/* Content area */}
-        <div className="flex-1 flex overflow-hidden z-10 relative">
+         {/* Content area */}
+         <div className="flex-1 flex min-h-0 overflow-hidden z-10 relative">
           {activeView === "board" && (
             <KanbanBoard
               columns={COLUMNS}
@@ -693,8 +693,9 @@ function KanbanBoard({
   onCreateTask?: () => void;
 }) {
   return (
-    <div className="flex-1 overflow-x-auto overflow-y-hidden p-6">
-      <div className="flex h-full gap-4">
+    // Allow vertical scrolling when content is tall and stack columns on small screens
+    <div className="flex-1 min-h-0 overflow-auto p-4 md:p-6">
+      <div className="flex h-full gap-4 flex-col md:flex-row">
         {columns.map((col) => {
           const colTasks = getColumnTasks(col.id);
           const isActive = col.id === "in_progress";
@@ -703,7 +704,7 @@ function KanbanBoard({
           return (
             <div
               key={col.id}
-              className={`flex-1 flex flex-col min-w-0 rounded-lg border backdrop-blur-sm ${
+              className={`w-full md:flex-1 flex flex-col min-w-0 rounded-lg border backdrop-blur-sm ${
                 isActive
                   ? "border-t-2 border-t-primary border-x-border border-b-border column-glow"
                   : "border-border"
@@ -739,7 +740,7 @@ function KanbanBoard({
               </div>
 
               {/* Column Body */}
-              <ScrollArea className="flex-1">
+               <ScrollArea className="flex-1 min-h-0">
                 <div
                   className="p-3 flex flex-col gap-3 min-h-[120px] relative z-10"
                   onDragOver={(e) => onDragOver(e, col.id)}

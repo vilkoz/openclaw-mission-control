@@ -86,6 +86,7 @@ export class OpenClawClient {
   constructor(url = "ws://127.0.0.1:18789", opts?: { authToken?: string }) {
     this.url = url;
     this.authToken = opts?.authToken;
+    console.log(`OpenClawClient initialized with URL: ${this.url}, auth: ${this.authToken ? "yes" : "no"}`);
   }
 
   // --- Connection with proper Gateway protocol ---
@@ -98,6 +99,7 @@ export class OpenClawClient {
       this.connectReject = reject;
 
       try {
+        console.log(`Connecting to OpenClaw Gateway at ${this.url}...`);
         this.ws = new WebSocket(this.url, {
           maxPayload: 25 * 1024 * 1024,
         });
